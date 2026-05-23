@@ -1,4 +1,4 @@
-import { LayoutDashboard, GraduationCap, Sparkles, UserCircle, LogOut, BookOpen, Spider, ChevronRight } from 'lucide-react'
+import { LayoutDashboard, GraduationCap, Sparkles, UserCircle, LogOut, BookOpen, Webhook, ChevronRight } from 'lucide-react'
 
 const NAV = [
   { id: 'dashboard',    label: 'Dashboard',    Icon: LayoutDashboard },
