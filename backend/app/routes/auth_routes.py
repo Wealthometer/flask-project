@@ -102,4 +102,5 @@ def update_profile_text():
     user_id = get_jwt_identity()
     data = request.get_json()
     profile_text = data.get("profile_text")
+
     }), 200
