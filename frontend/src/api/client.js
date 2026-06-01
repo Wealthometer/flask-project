@@ -1,4 +1,4 @@
-const BASE = '/api'
+const BASE = 'http://localhost:5000/api'
 
 function getToken() {
   return localStorage.getItem('sf_token')
