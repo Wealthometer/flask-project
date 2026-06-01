@@ -24,7 +24,7 @@ export default function Dashboard({ user, onNav, toast }) {
     setSeeding(true)
     try {
       const d = await api.seedData()
-      toast(d.message, 'success')
+      toast(`${d.message} — ${d.total_added} new scholarships added`, 'success')
       const s = await api.getScholarships()
       setScholarships(s)
     } catch (e) { toast(e.message, 'error') }
