@@ -7,9 +7,8 @@ HEADERS = {
     "User-Agent": "Mozilla/5.0"
 }
 
-# -------------------------
+
 # 1. OPPORTUNITY DESK
-# -------------------------
 def scrape_opportunity_desk():
     url = "https://opportunitydesk.org/category/scholarships/"
 
@@ -51,10 +50,9 @@ def scrape_opportunity_desk():
         return 0
 
 
-# -------------------------
+
 # 2. SCHOLARSHIPS.COM
 # (light scrape - limited HTML access)
-# -------------------------
 def scrape_scholarships_com():
     url = "https://www.scholarships.com/financial-aid/college-scholarships/scholarships-by-type"
 
@@ -95,9 +93,7 @@ def scrape_scholarships_com():
         return 0
 
 
-# -------------------------
 # 3. SCHOLARSHIP PORTAL (basic)
-# -------------------------
 def scrape_scholarship_portal():
     url = "https://www.scholarshipportal.com/scholarships"
 
@@ -138,9 +134,8 @@ def scrape_scholarship_portal():
         return 0
 
 
-# -------------------------
 # MASTER RUNNER
-# -------------------------
+
 def run_all_scrapers():
 
     total = 0

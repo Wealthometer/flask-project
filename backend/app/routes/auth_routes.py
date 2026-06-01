@@ -7,9 +7,8 @@ from app.models import User
 auth_bp = Blueprint("auth", __name__)
 
 
-# ========================
+
 # REGISTER USER
-# ========================
 @auth_bp.route("/register", methods=["POST"])
 def register():
 
@@ -46,9 +45,7 @@ def register():
     }), 201
 
 
-# ========================
 # LOGIN USER
-# ========================
 @auth_bp.route("/login", methods=["POST"])
 def login():
 
