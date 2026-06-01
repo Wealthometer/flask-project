@@ -1,4 +1,4 @@
-const BASE = '/api'
+const BASE = 'http://localhost:5000/api'
 
 function getToken() {
   return localStorage.getItem('sf_token')
@@ -26,7 +26,8 @@ export const api = {
     const qs = new URLSearchParams(params).toString()
     return request(`/scholarships${qs ? '?' + qs : ''}`)
   },
-  getMatches: () => request('/matches'),
-  runMatch:   () => request('/match', { method: 'POST' }),
-  seedData:   () => request('/scholarships/seed', { method: 'POST' }),
+  getScholarship: (id) => request(`/scholarships/${id}`),
+  getMatches: () => request('/match'),
+  runMatch:   () => request('/match'),
+  seedData:   () => request('/scrape/run'),
 }

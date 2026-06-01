@@ -91,3 +91,26 @@ def profile():
         "profile_text": user.profile_text,
         "created_at": user.created_at
     }), 200
+
+
+@auth_bp.route("/profile/text", methods=["PUT"])
+@jwt_required()
+def update_profile_text():
+    user_id = get_jwt_identity()
+    data = request.get_json()
+    profile_text = data.get("profile_text")
+
+    if profile_text is None:
+        return jsonify({"error": "Profile text is required"}), 400
+
+    user = User.query.get(user_id)
+    if not user:
+        return jsonify({"error": "User not found"}), 404
+
+    user.profile_text = profile_text
+    db.session.commit()
+
+    return jsonify({
+        "message": "Profile updated successfully",
+        "profile_text": user.profile_text
+    }), 200

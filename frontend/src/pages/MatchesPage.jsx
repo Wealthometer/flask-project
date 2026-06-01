@@ -20,9 +20,9 @@ export default function MatchesPage({ toast }) {
   async function rerun() {
     setRunning(true)
     try {
-      const d = await api.runMatch()
-      toast(`${d.match_count} matches found`, 'success')
-      await load()
+      const results = await api.runMatch()
+      toast(`${results.length} matches found`, 'success')
+      setMatches(results)
     } catch (e) { toast(e.message, 'error') }
     finally { setRunning(false) }
   }
@@ -59,10 +59,10 @@ export default function MatchesPage({ toast }) {
         <div style={S.grid}>
           {matches.map((m, i) => (
             <ScholarshipCard
-              key={m.match_id}
-              sch={m.scholarship}
-              score={m.similarity_score}
-              onView={(sch) => setModal({ sch, score: m.similarity_score })}
+              key={m.id || `${m.title}-${i}`}
+              sch={m}
+              score={m.score}
+              onView={(sch) => setModal({ sch, score: m.score })}
               index={i}
             />
           ))}

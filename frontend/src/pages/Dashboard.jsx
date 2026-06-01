@@ -24,7 +24,7 @@ export default function Dashboard({ user, onNav, toast }) {
     setSeeding(true)
     try {
       const d = await api.seedData()
-      toast(d.message, 'success')
+      toast(`${d.message} — ${d.total_added} new scholarships added`, 'success')
       const s = await api.getScholarships()
       setScholarships(s)
     } catch (e) { toast(e.message, 'error') }
@@ -34,10 +34,9 @@ export default function Dashboard({ user, onNav, toast }) {
   async function runMatch() {
     setMatching(true)
     try {
-      const d = await api.runMatch()
-      toast(`${d.message} — ${d.match_count} matches found`, 'success')
-      const m = await api.getMatches()
-      setMatches(m)
+      const results = await api.runMatch()
+      toast(`${results.length} matches found`, 'success')
+      setMatches(results)
     } catch (e) { toast(e.message, 'error') }
     finally { setMatching(false) }
   }
@@ -74,7 +73,7 @@ export default function Dashboard({ user, onNav, toast }) {
           { label: 'Scholarships',   val: scholarships.length, Icon: GraduationCap, color: 'var(--green)', page: 'scholarships' },
           { label: 'My Matches',     val: matches.length,      Icon: Sparkles,      color: 'var(--blue)',  page: 'matches' },
           { label: 'Urgent (30d)',   val: urgent.length,       Icon: Clock,         color: 'var(--red)',   page: 'scholarships' },
-          { label: 'Top Score',      val: topM[0] ? `${Math.round(topM[0].similarity_score)}%` : '—', Icon: TrendingUp, color: 'var(--gold)', page: 'matches' },
+          { label: 'Top Score',      val: topM[0] ? `${Math.round(topM[0].score)}%` : '—', Icon: TrendingUp, color: 'var(--gold)', page: 'matches' },
         ].map(({ label, val, Icon, color, page }, i) => (
           <div key={label} style={{ ...S.stat, animationDelay: `${i * 60}ms` }} onClick={() => onNav(page)}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14 }}>
@@ -96,14 +95,14 @@ export default function Dashboard({ user, onNav, toast }) {
           {topM.length === 0 ? (
             <EmptyState msg="No matches yet. Update your profile and run matching." />
           ) : topM.map((m, i) => (
-            <div key={m.match_id} style={{ ...S.matchRow, animationDelay: `${i * 50}ms` }}>
+            <div key={m.id || `${m.title}-${i}`} style={{ ...S.matchRow, animationDelay: `${i * 50}ms` }}>
               <span style={S.rank}>#{i + 1}</span>
               <div style={{ flex: 1, minWidth: 0 }}>
-                <div style={S.matchTitle}>{m.scholarship.title}</div>
-                <div style={S.matchSub}>{m.scholarship.country}</div>
+                <div style={S.matchTitle}>{m.title}</div>
+                <div style={S.matchSub}>{m.country}</div>
               </div>
-              <span style={{ ...S.score, color: m.similarity_score >= 80 ? 'var(--green)' : m.similarity_score >= 60 ? 'var(--gold)' : 'var(--blue)' }}>
-                {Math.round(m.similarity_score)}%
+              <span style={{ ...S.score, color: m.score >= 80 ? 'var(--green)' : m.score >= 60 ? 'var(--gold)' : 'var(--blue)' }}>
+                {Math.round(m.score)}%
               </span>
             </div>
           ))}

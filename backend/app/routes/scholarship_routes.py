@@ -43,7 +43,10 @@ def get_scholarships():
             "provider": s.provider,
             "country": s.country,
             "degree_level": s.degree_level,
-            "deadline": str(s.deadline)
+            "eligibility": s.eligibility,
+            "description": s.description,
+            "deadline": str(s.deadline),
+            "application_link": s.application_link
         })
 
     return jsonify(result), 200
