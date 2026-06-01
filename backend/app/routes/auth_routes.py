@@ -103,4 +103,5 @@ def update_profile_text():
     data = request.get_json()
     profile_text = data.get("profile_text")
 
+    if profile_text is None:
     }), 200
