@@ -115,4 +115,5 @@ def update_profile_text():
 
     return jsonify({
         "message": "Profile updated successfully",
+        "profile_text": user.profile_text
     }), 200
