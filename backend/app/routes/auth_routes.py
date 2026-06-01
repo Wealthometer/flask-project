@@ -100,4 +100,5 @@ def profile():
 @jwt_required()
 def update_profile_text():
     user_id = get_jwt_identity()
+    data = request.get_json()
     }), 200
