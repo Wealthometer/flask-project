@@ -111,4 +111,5 @@ def update_profile_text():
         return jsonify({"error": "User not found"}), 404
 
     user.profile_text = profile_text
+    db.session.commit()
     }), 200
