@@ -91,9 +91,9 @@ function DetailRow({ icon, label, val }) {
 }
 
 const S = {
-  page: { display: 'flex', flexDirection: 'column', gap: 20, maxWidth: 680 },
+  page: { display: 'flex', flexDirection: 'column', gap: 20, width: '100%', maxWidth: 680 },
   infoCard: {
-    display: 'flex', alignItems: 'center', gap: 18,
+    display: 'flex', alignItems: 'center', gap: 18, flexWrap: 'wrap',
     padding: '22px 26px', background: 'var(--bg-card)', border: '1px solid var(--border)',
     borderRadius: 'var(--r-lg)', animation: 'fadeUp .35s both',
     backgroundImage: 'radial-gradient(ellipse at top left, rgba(52,211,153,.05) 0%, transparent 60%)',
