@@ -43,12 +43,12 @@ export default function App() {
   }
 
   return (
-    <div style={{ display: 'flex', minHeight: '100vh' }}>
-      <Sidebar page={page} user={user} onNav={setPage} onLogout={logout} />
+    <div className="app-shell" style={{ display: 'flex', minHeight: '100vh' }}>
+      <Sidebar className="sidebar" page={page} user={user} onNav={setPage} onLogout={logout} />
 
-      <div style={{ marginLeft: 'var(--sidebar)', flex: 1, display: 'flex', flexDirection: 'column' }}>
+      <div className="content-wrapper" style={{ marginLeft: 'var(--sidebar)', flex: 1, display: 'flex', flexDirection: 'column' }}>
         {/* Topbar */}
-        <header style={{
+        <header className="topbar" style={{
           height: 'var(--topbar)', background: 'var(--bg-2)', borderBottom: '1px solid var(--border)',
           display: 'flex', alignItems: 'center', padding: '0 28px', position: 'sticky', top: 0, zIndex: 50,
         }}>
@@ -60,7 +60,7 @@ export default function App() {
         </header>
 
         {/* Page content */}
-        <main style={{ flex: 1, padding: 28, maxWidth: 1200 }}>
+        <main className="app-main" style={{ flex: 1, padding: 28, maxWidth: 1200 }}>
           {page === 'dashboard'    && <Dashboard    user={user}  onNav={setPage} toast={toast} />}
           {page === 'scholarships' && <ScholarshipsPage          toast={toast} />}
           {page === 'matches'      && <MatchesPage               toast={toast} />}
