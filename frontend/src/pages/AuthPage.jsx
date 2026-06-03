@@ -33,15 +33,15 @@ export default function AuthPage({ onLogin }) {
   }
 
   return (
-    <div style={S.page}>
+    <div className="auth-page" style={S.page}>
       {/* Left panel */}
-      <div style={S.left}>
+      <div className="auth-left" style={S.left}>
         <div style={S.brand}>
           <div style={S.logoMark}><BookOpen size={22} strokeWidth={2.5} color="#0d1b14" /></div>
           <span style={S.logoText}>ScholarFind</span>
         </div>
         <div style={S.hero}>
-          <h1 style={S.heroTitle}>Find your<br /><em style={S.heroEm}>perfect scholarship</em></h1>
+          <h1 className="heroTitle" style={S.heroTitle}>Find your<br /><em style={S.heroEm}>perfect scholarship</em></h1>
           <p style={S.heroSub}>AI-powered matching connects you to global funding opportunities tailored to your profile and goals.</p>
         </div>
         <div style={S.features}>
@@ -55,17 +55,17 @@ export default function AuthPage({ onLogin }) {
       </div>
 
       {/* Right panel */}
-      <div style={S.right}>
-        <form onSubmit={submit} style={S.form}>
+      <div className="auth-right" style={S.right}>
+        <form className="auth-form" onSubmit={submit} style={S.form}>
           <div style={S.formHeader}>
             <h2 style={S.formTitle}>{mode === 'login' ? 'Welcome back' : 'Create account'}</h2>
             <p style={S.formSub}>{mode === 'login' ? 'Sign in to your ScholarFind account' : 'Start finding scholarships today'}</p>
           </div>
 
           {/* Tabs */}
-          <div style={S.tabs}>
+          <div className="auth-tabs" style={S.tabs}>
             {['login','register'].map(m => (
-              <button key={m} type="button" style={{ ...S.tab, ...(mode === m ? S.tabActive : {}) }}
+              <button key={m} type="button" className="auth-tab" style={{ ...S.tab, ...(mode === m ? S.tabActive : {}) }}
                 onClick={() => { setMode(m); setError('') }}>
                 {m === 'login' ? 'Sign In' : 'Register'}
               </button>
@@ -85,7 +85,7 @@ export default function AuthPage({ onLogin }) {
 
           {error && <div style={S.errorBox}>{error}</div>}
 
-          <button type="submit" style={S.submitBtn} disabled={loading}>
+          <button type="submit" className="auth-submitBtn" style={S.submitBtn} disabled={loading}>
             {loading
               ? <><Loader2 size={16} style={{ animation: 'spin .7s linear infinite' }} /> Processing…</>
               : <>{mode === 'login' ? 'Sign In' : 'Create Account'} <ArrowRight size={15} /></>
