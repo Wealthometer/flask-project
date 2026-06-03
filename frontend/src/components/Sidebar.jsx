@@ -7,13 +7,13 @@ const NAV = [
   { id: 'profile',      label: 'Profile',      Icon: UserCircle },
 ]
 
-export default function Sidebar({ page, user, onNav, onLogout }) {
+export default function Sidebar({ page, user, onNav, onLogout, className }) {
   const initials = user?.full_name
     ? user.full_name.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase()
     : '?'
 
   return (
-    <aside style={S.sidebar}>
+    <aside className={className} style={S.sidebar}>
       {/* Logo */}
       <div style={S.logo}>
         <div style={S.logoMark}><BookOpen size={17} strokeWidth={2.5} color="#0d1b14" /></div>
