@@ -174,14 +174,14 @@ function EmptyState({ msg }) {
 const S = {
   page: { display: 'flex', flexDirection: 'column', gap: 20 },
   welcome: {
-    display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16,
+    display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16, flexWrap: 'wrap',
     padding: '22px 26px', background: 'var(--bg-card)', border: '1px solid var(--border)', borderRadius: 'var(--r-lg)',
     backgroundImage: 'radial-gradient(ellipse at top right, rgba(52,211,153,.05) 0%, transparent 60%)',
     animation: 'fadeUp .35s both',
   },
   welcomeTitle: { fontSize: 20, fontWeight: 800, letterSpacing: '-0.03em', marginBottom: 5 },
   welcomeSub: { fontSize: 13.5, color: 'var(--ink-2)' },
-  statsGrid: { display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 12 },
+  statsGrid: { display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(220px,1fr))', gap: 12 },
   stat: {
     padding: '18px 20px', background: 'var(--bg-card)', border: '1px solid var(--border)', borderRadius: 'var(--r-lg)',
     cursor: 'pointer', animation: 'fadeUp .35s both', transition: 'all var(--ease)',
@@ -189,7 +189,7 @@ const S = {
   statLabel: { fontSize: 10.5, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.07em', color: 'var(--ink-3)' },
   statIcon: { width: 28, height: 28, borderRadius: 8, display: 'flex', alignItems: 'center', justifyContent: 'center' },
   statVal: { fontSize: 32, fontWeight: 900, letterSpacing: '-0.04em', color: 'var(--ink)', lineHeight: 1 },
-  twoCol: { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 },
+  twoCol: { display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(280px,1fr))', gap: 16 },
   panel: { background: 'var(--bg-card)', border: '1px solid var(--border)', borderRadius: 'var(--r-lg)', overflow: 'hidden', animation: 'fadeUp .35s .08s both' },
   panelHead: { display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '14px 18px', borderBottom: '1px solid var(--border)' },
   panelTitle: { display: 'flex', alignItems: 'center', gap: 7, fontSize: 13, fontWeight: 700, color: 'var(--ink)' },
